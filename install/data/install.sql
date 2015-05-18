@@ -225,70 +225,6 @@ CREATE TABLE IF NOT EXISTS `pre_user_role_menu` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `pre_weibo_hide_area`
---
-
-DROP TABLE IF EXISTS `pre_weibo_hide_area`;
-CREATE TABLE IF NOT EXISTS `pre_weibo_hide_area` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) DEFAULT '0',
-  `weibo_id` int(10) DEFAULT '0',
-  `adre` varchar(64) DEFAULT NULL,
-  `longitude` varchar(32) DEFAULT NULL,
-  `latitude` varchar(32) DEFAULT NULL,
-  `range` int(10) DEFAULT NULL,
-  `dateline` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`) USING BTREE,
-  KEY `weibo_id` (`weibo_id`) USING BTREE
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=157 ;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `pre_weibo_long_lat`
---
-
-DROP TABLE IF EXISTS `pre_weibo_long_lat`;
-CREATE TABLE IF NOT EXISTS `pre_weibo_long_lat` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) DEFAULT NULL,
-  `weibo_id` int(10) DEFAULT NULL,
-  `longitude` varchar(32) DEFAULT NULL,
-  `latitude` varchar(32) DEFAULT NULL,
-  `address` varchar(128) DEFAULT NULL,
-  `dateline` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `dateline` (`dateline`) USING BTREE,
-  KEY `user_id` (`user_id`) USING BTREE,
-  KEY `weibo_id` (`weibo_id`) USING BTREE,
-  KEY `longitude` (`longitude`) USING BTREE,
-  KEY `latitude` (`latitude`) USING BTREE
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1707 ;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `pre_weibo_users`
---
-
-DROP TABLE IF EXISTS `pre_weibo_users`;
-CREATE TABLE IF NOT EXISTS `pre_weibo_users` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned DEFAULT '0',
-  `weibo_id` varchar(64) DEFAULT '0',
-  `weibo_name` varchar(64) DEFAULT NULL,
-  `run_time_start` time DEFAULT '08:00:00',
-  `run_time_end` time DEFAULT '20:00:00',
-  `send_weibo_check` tinyint(1) DEFAULT '1',
-  `trigger_limit` int(3) unsigned DEFAULT '100',
-  `trigger_limit_left` int(3) DEFAULT '100',
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`) USING BTREE,
-  KEY `weibo_id` (`weibo_id`) USING BTREE
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
-
---
 -- 限制导出的表
 --
 
@@ -319,20 +255,6 @@ CREATE TABLE IF NOT EXISTS `pre_language` (
   KEY `isdelete` (`isdelete`),
   KEY `tran_language_title` (`tran_language_title`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-DROP TABLE IF EXISTS `pre_map_lng_lat`;
-CREATE TABLE `pre_map_lng_lat` (
-  `id` int(12) NOT NULL AUTO_INCREMENT,
-  `sn_mac` varchar(32) DEFAULT NULL,
-  `latitude` varchar(32) DEFAULT NULL,
-  `longitude` varchar(32) DEFAULT NULL,
-  `dateline` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `sn_mac` (`sn_mac`) USING BTREE,
-  KEY `dateline` (`dateline`) USING BTREE,
-  KEY `longitude` (`longitude`) USING BTREE,
-  KEY `latitude` (`latitude`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 ALTER TABLE  `pre_users` ADD  `user_score` INT( 10 ) NULL DEFAULT  '0' COMMENT  '用户积分' AFTER  `user_detail_id` ,
 ADD INDEX (  `user_score` ) ;
