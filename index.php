@@ -1,6 +1,8 @@
 <?php
 if(!file_exists('./config/config_global.php')){
     header('location: install/index.php');
+}else{
+	header('location: admin.php');
 }
 /**
  * 系统入口文件
